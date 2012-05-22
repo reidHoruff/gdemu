@@ -1,0 +1,11 @@
+dcpu16 emulator and dissasembler written in c with a Gtk+ UI.
+
+To build run scons.
+An executable called dcpu will be created in root dir.
+
+*Command line args not yet finalized*
+$dcpu filename.dcpu16
+$dcpu
+
+
+tools/ contains a java app for creating dcpu binary files from plain txt op codes.
