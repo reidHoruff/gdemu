@@ -129,11 +129,10 @@ void instruction_HWI(udcpu_t, udcpu_t*);
 udcpu_t total_instruction_size(udcpu_t);
 
 
-bool interrupt_queueing;
+extern bool interrupt_queueing;
 #define ENABLED  true
 #define DISABLED false
 
-bool queue_int_not_trigger;
+extern bool queue_int_not_trigger;
 
-#include "instructions.c"
 #endif

@@ -2,11 +2,8 @@
 #include <stdlib.h>
 
 #include "dcpu.h"
-#include "instructions.h"
-#include "values.h"
 #include "disassembler.h"
 #include "hardware.h"
-#include "keyboard.h"
 #include "gui.h"
 
 /* could be written a lot better */
@@ -18,23 +15,8 @@ int open_file(const char *f_name)
 		return 0;
 	}
 	
-	/* determine size of input file */
-	fseek(file, 0, SEEK_END);
-	code_size = ftell(file)/2;
-	fseek(file, 0, SEEK_SET);
+	dcpu_read_file( file );
 	
-	int index = 0;
-	while( code_size --> 0 ){
-		dcpu_mem[index] = dcpu_rom[index] = fgetc(file);
-		
-		dcpu_mem[index] = dcpu_rom[index] <<= 8;
-		
-		dcpu_mem[index] = dcpu_rom[index] |= fgetc(file);
-		index++;
-	}
-	
-	code_size = index;
-	fclose(file);
 	return 1;
 }
 

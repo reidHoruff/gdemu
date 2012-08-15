@@ -1,6 +1,10 @@
 #include "disassembler.h"
 #include "dcpu.h"
 
+const char *reg_names = "ABCXYZIJ";
+const char *reg_inst_names[0x20];
+const char *spec_inst_names[0x20];
+
 udcpu_t d_pc;
 udcpu_t tree_depth = 0;
 

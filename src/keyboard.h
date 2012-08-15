@@ -43,11 +43,12 @@
 #define SHIFT          0x90
 #define CONTROL        0x91
 
-hardware_device *keyboard;
+extern hardware_device *keyboard;
 
 #define KEYB_BUFFER_SIZE 0xFFFF
-udcpu_t *keyb_buffer, *keyboard_key_is_pressed;
-udcpu_t keyb_buffer_ptr;
+
+extern udcpu_t *keyb_buffer, *keyboard_key_is_pressed;
+extern udcpu_t keyb_buffer_ptr;
 
 void init_keyboard(void);
 void keyboard_handle_int(udcpu_t*);
@@ -59,7 +60,6 @@ void keyboard_key_released(uldcpu_t);
 void keyboard_trigger_int(void);
 udcpu_t get_key_code(udcpu_t);
 
-udcpu_t keyboard_interrupt_message;
+extern udcpu_t keyboard_interrupt_message;
 
-#include "keyboard.c"
 #endif

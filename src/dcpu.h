@@ -1,6 +1,15 @@
 #ifndef _DCPU_H_
 #define _DCPU_H_
 
+typedef int16_t   sdcpu_t;    /*signed two byte word*/
+typedef u_int16_t udcpu_t;    /*signed two byte word*/
+typedef int32_t   ldcpu_t;    /*long, for overflow detection*/
+typedef u_int32_t uldcpu_t;   /*long, for overflow detection*/
+
+typedef int bool;
+#define true  1
+#define false 0
+
 #define MEM_SIZE_WORDS      0x10000
 #define STACK_MEM_START_LOC 0xFFFF
 
@@ -109,46 +118,39 @@
 #define OP_HWQ    0x11
 #define OP_HWI    0x12
 
-typedef int16_t   sdcpu_t;    /*signed two byte word*/
-typedef u_int16_t udcpu_t;    /*signed two byte word*/
-typedef int32_t   ldcpu_t;    /*long, for overflow detection*/
-typedef u_int32_t uldcpu_t;   /*long, for overflow detection*/
 #define MAX_DCPU_T       0xFFFF
 #define MIN_DCPU_T       0x0000
 #define SIGN(x) ((sdcpu_t)(x))
-
-typedef int bool;
-#define true  1
-#define false 0
 
 #define OVERFLOW_FLAG    0x0001
 #define NO_OVERFLOW_FLAG 0x0000
 #define UNDERFLOW_FLAG   0xffff
 
-udcpu_t register_literals[13];
+extern udcpu_t register_literals[13];
 /* 
  * registers are indexed by their machine value 
  * other values (PC, SP, EX, IA) are also indexed
  */
+ 
+extern udcpu_t cycles_wait;
 
-udcpu_t *dcpu_mem, *dcpu_rom;
-bool if_skip_flag;
-
-udcpu_t cycles_wait;
 #define ADD_CYCLES(x) (cycles_wait += (x-1))
 
-ldcpu_t code_size;
+extern udcpu_t code_size;
+extern bool if_skip_flag;
 
 #define INT_QUEUE_SIZE 256
-udcpu_t *interrupt_queue;
-udcpu_t interrupt_queue_ptr;
+extern udcpu_t interrupt_queue_ptr;
 
+extern udcpu_t *dcpu_mem, *dcpu_rom, *interrupt_queue;
+
+void dcpu_read_file(FILE*);
 void disp_info(void);
 void dcpu_cycle(void);
 void dcpu_step(void);
 void init_dcpu(void);
 void queue_interrupt(udcpu_t);
 void reset_dcpu(void);
+udcpu_t *get_value(udcpu_t, udcpu_t*, bool);
 
-#include "dcpu.c"
 #endif
