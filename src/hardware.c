@@ -3,8 +3,6 @@
 #include "lem.h"
 #include "clock.h"
 
-hardware_device **connected_devices;
-
 void init_hardware()
 {
 	connected_devices = (hardware_device**)malloc( sizeof(hardware_device*) * MAX_CONECTED_DEVICES );

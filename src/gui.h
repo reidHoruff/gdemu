@@ -1,6 +1,5 @@
 #ifndef _GUI_H_
 #define _GUI_H_
-
 #include "dcpu.h"
 #include <gtk/gtk.h>
 
@@ -19,6 +18,23 @@ void update_mem_location(udcpu_t, udcpu_t);
 void draw_char(cairo_t*, udcpu_t, udcpu_t, udcpu_t, udcpu_t, udcpu_t, udcpu_t);
 void gui_put_pixel( cairo_t *cr, udcpu_t, udcpu_t, udcpu_t );
 
+GtkBuilder *builder;
+GtkEntry **value_sbuttons;
+
+GtkWidget *mem_view, *live_disassemble_view;
+GtkTreeModel *mem_model;
+GtkListStore *mem_tree_store;
+
+GtkWidget *screen_view;
+
 #define GTK_GET_OBJ(x) gtk_builder_get_object(builder, x)
 
+enum{
+	MEM_ADDR = 0,
+	MEM_VALUE,
+	MEM_CHAR,
+	NUM_COLS
+};
+
+#include "gui.c"
 #endif

@@ -8,15 +8,15 @@
 #define CLOCK_VERSION      0x1
 #define CLOCK_MANUFACTURER 0x0
 
-extern hardware_device *dcpu_clock;
-
+hardware_device *dcpu_clock;
 void init_clock(void);
 void dcpu_clock_handle_int(udcpu_t*);
 void clock_ticks(void);
 void clock_reset(void);
 void clock_trigger_int(void);
 
-extern udcpu_t clock_b_value, clock_interrupt_message;
-extern uldcpu_t clock_ticks_elapsed;
+udcpu_t clock_b_value, clock_interrupt_message;
+uldcpu_t clock_ticks_elapsed;
 
+#include "clock.c"
 #endif
