@@ -3,7 +3,6 @@
 
 #include "dcpu.h"
 #include "instructions.h"
-#include "values.h"
 #include "disassembler.h"
 #include "hardware.h"
 #include "keyboard.h"
