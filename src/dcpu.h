@@ -142,8 +142,7 @@ ldcpu_t code_size;
 #define INT_QUEUE_SIZE 256
 udcpu_t *interrupt_queue;
 udcpu_t interrupt_queue_ptr;
-		
-udcpu_t *get_value(udcpu_t, udcpu_t*, bool);
+
 void disp_info(void);
 void dcpu_cycle(void);
 void dcpu_step(void);

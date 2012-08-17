@@ -1,5 +1,6 @@
 #include "instructions.h"
 #include "dcpu.h"
+#include "values.h"
 #include "hardware.h"
 
 void instruction_SET(udcpu_t op, udcpu_t *a, udcpu_t *b)
