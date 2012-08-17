@@ -1,6 +1,11 @@
 #include "clock.h"
 #include "dcpu.h"
 
+uldcpu_t clock_ticks_elapsed;
+hardware_device *dcpu_clock;
+udcpu_t clock_b_value, clock_interrupt_message;
+
+
 void init_clock()
 {
 	dcpu_clock = (hardware_device*)malloc( sizeof(hardware_device) );

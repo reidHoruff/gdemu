@@ -7,6 +7,22 @@
 udcpu_t screen_pix_w, screen_pix_h, screen_offset_x, screen_offset_y;
 gboolean emulator_running, start_pressed;
 
+GtkBuilder *builder;
+GtkEntry **value_sbuttons;
+
+GtkWidget *mem_view, *live_disassemble_view;
+GtkTreeModel *mem_model;
+GtkListStore *mem_tree_store;
+
+GtkWidget *screen_view;
+
+enum{
+	MEM_ADDR = 0,
+	MEM_VALUE,
+	MEM_CHAR,
+	NUM_COLS
+};
+
 void draw_char(cairo_t *cr, udcpu_t xp, udcpu_t yp, udcpu_t w0, udcpu_t w1, udcpu_t fc, udcpu_t bc)
 {
 	/* cell coords to pix coords */

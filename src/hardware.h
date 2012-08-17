@@ -5,8 +5,6 @@
 
 #define MAX_CONECTED_DEVICES 25
 
-udcpu_t no_connected_devices;
-
 typedef struct{
 	
 	uldcpu_t id;
@@ -17,8 +15,6 @@ typedef struct{
 	void (*reset)(void);
 	
 }hardware_device;
-
-hardware_device **connected_devices;
 
 void init_hardware(void);
 void add_hardware_device(hardware_device*);

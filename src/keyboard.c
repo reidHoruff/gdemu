@@ -1,6 +1,11 @@
 #include "keyboard.h"
 #include "dcpu.h"
 
+hardware_device *keyboard;
+udcpu_t *keyb_buffer, *keyboard_key_is_pressed;
+udcpu_t keyb_buffer_ptr;
+udcpu_t keyboard_interrupt_message;
+
 void init_keyboard()
 {	
 	keyboard = (hardware_device*)malloc( sizeof(hardware_device) );

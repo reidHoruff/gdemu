@@ -4,6 +4,10 @@
 udcpu_t d_pc;
 udcpu_t tree_depth = 0;
 
+const char *reg_names = "ABCXYZIJ";
+const char *reg_inst_names[0x20];
+const char *spec_inst_names[0x20];
+
 void init_disassembler()
 {
 	/*TODO: use defines instead of literal OP values */
